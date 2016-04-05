@@ -21,21 +21,30 @@ $(KERNEL): edison-linux/.config
 $(BCM4334X): edison-bcm43340/.git $(KERNEL)
 	cd edison-bcm43340 && make
 
-config: edison-linux/.git
+config: edison-linux/.config
 	cd edison-linux && make config
 
-xconfig: edison-linux/.git
+xconfig: edison-linux/.config
 	cd edison-linux && make xconfig
 
 clean: edison-linux/.git edison-linux/.git
 	cd edison-linux && make clean
 	cd edison-bcm43340 && make clean
+	[ -e collected ] && rm -R collected || true
 
 collected/$VERSION: $(KERNEL) $(BCM4334X)
 	mkdir -p collected
 	./collect.sh
 
-install: collected/$VERSION $(DFU)/edison-image-edison.ext4  $(DFU)/edison-image-edison.hddimg
-	./dfu-image-install.sh $(DFU)
+collect: collected/$VERSION
+
+${DFU}/.edison-helper-install: collected/$VERSION $(DFU)/edison-image-edison.ext4  $(DFU)/edison-image-edison.hddimg
+	./dfu-image-install.sh "${DFU}"
+	touch ${DFU}/.edison-helper-install
+
+install: ${DFU}/.edison-helper-install
+
+flashall: ${DFU}/.edison-helper-install
+	cd "${DFU}" && ./flashall.sh
 
 .PHONY: all
