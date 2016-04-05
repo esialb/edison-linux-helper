@@ -1,12 +1,11 @@
 all: edison-linux/arch/x86/boot/bzImage edison-bcm43340/bcm4334x.ko
 
 edison-linux/.git:
-	git submodule init
-	git submodule update
+	git submodule update --init
+	cd edison-linux && git apply ../mfd_trace.h.patch
 
 edison-bcm43340/.git:
-	git submodule init
-	git submodule update
+	git submodule update --init
 
 edison-linux/.config: edison-linux/.git edison-default-kernel.config
 	cp edison-default-kernel.config edison-linux/.config

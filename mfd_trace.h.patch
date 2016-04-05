@@ -1,0 +1,12 @@
+diff --git a/drivers/tty/serial/mfd_trace.h b/drivers/tty/serial/mfd_trace.h
+index 49afd9b..b4c643c 100644
+--- a/drivers/tty/serial/mfd_trace.h
++++ b/drivers/tty/serial/mfd_trace.h
+@@ -1,6 +1,6 @@
+ #undef TRACE_INCLUDE_PATH
+ #undef TRACE_INCLUDE_FILE
+-#define TRACE_INCLUDE_PATH .
++#define TRACE_INCLUDE_PATH ../../drivers/tty/serial
+ #define TRACE_INCLUDE_FILE mfd_trace
+ 
+ #define TRACE_SYSTEM hsu
