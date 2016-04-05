@@ -1,7 +1,7 @@
 [submodule "edison-linux"]
 	path = edison-linux
 	url = https://github.com/01org/edison-linux
-	branch = master
+	branch = edison-3.10.98
 [submodule "edison-bcm43340"]
 	path = edison-bcm43340
 	url = https://github.com/01org/edison-bcm43340
