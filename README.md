@@ -22,9 +22,15 @@ Configuring and building a kernel:
 ```bash
 git clone https://github.com/esialb/edison-linux-helper.git
 cd edison-linux-helper/
-make xconfig
 make
 ```
+
+Configuring the kernel:
+
+```bash
+make xconfig
+```
+
 
 Updating a DFU installation image:
 
