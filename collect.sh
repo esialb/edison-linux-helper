@@ -32,8 +32,8 @@ echo
 echo "${MODCOUNT} modules copied"
 
 echo "computing module dependencies"
-cp modules.* "${MODULES}"
-depmod -a -b "${FSROOT}" -F System.map "${RELEASE}"
+cp edison-linux/modules.* "${MODULES}"
+depmod -a -b "${FSROOT}" -F edison-linux/System.map "${RELEASE}"
 
 echo "copying kernel image"
 
@@ -42,3 +42,5 @@ mkdir -p "${FSROOT}/boot"
 [ -e "${FSROOT}/boot/bzImage-${RELEASE}" ] && rm -Rf "${FSROOT}/boot/bzImage-${RELEASE}"
 cp "${BZIMAGE}" "${FSROOT}/lib/kernel/bzImage-${RELEASE}"
 cp "${BZIMAGE}" "${FSROOT}/boot/vmlinuz"
+
+ln -sf "${FSROOT}" "collected/latest"

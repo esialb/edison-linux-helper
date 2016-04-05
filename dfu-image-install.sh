@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. ./functions.sh
+
 TOFLASH="$1"
 
 if [ -z "${TOFLASH}" ]; then
@@ -43,8 +45,8 @@ echo
 echo "${MODCOUNT} modules copied"
 
 echo "computing module dependencies"
-cp modules.* "${MODULES}"
-depmod -a -b "${FSROOT_MOUNT}" -F System.map "${RELEASE}"
+cp edison-linux/modules.* "${MODULES}"
+depmod -a -b "${FSROOT_MOUNT}" -F edison-linux/System.map "${RELEASE}"
 
 echo "copying kernel image"
 

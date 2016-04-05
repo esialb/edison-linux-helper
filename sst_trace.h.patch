@@ -1,0 +1,12 @@
+diff --git a/sound/soc/intel/sst/sst_trace.h b/sound/soc/intel/sst/sst_trace.h
+index 8d34ef3..574d9c6 100644
+--- a/sound/soc/intel/sst/sst_trace.h
++++ b/sound/soc/intel/sst/sst_trace.h
+@@ -142,6 +142,6 @@ TRACE_EVENT(sst_fw_download,
+ 
+ /* This part must be outside protection */
+ #undef TRACE_INCLUDE_PATH
+-#define TRACE_INCLUDE_PATH .
++#define TRACE_INCLUDE_PATH ../../sound/soc/intel/sst
+ #define TRACE_INCLUDE_FILE sst_trace
+ #include <trace/define_trace.h>

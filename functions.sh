@@ -11,7 +11,7 @@ function eh_require_submodules {
 }
 
 function eh_kernel_release_version {
-  echo -n $(cat "$(eh_repo_root)/edison-linux/include/generated/utsrelease.h" 2>/dev/null | awk '{print $3}' | perl -p -e 's/^"(.*)"$/$1/')
+  echo -n $(cat "$(eh_repo_root)/edison-linux/include/generated/utsrelease.h" 2>/dev/null | awk '{print $3}' | sed -r 's/^"(.*)"$/\1/')
 }
 
 function eh_kernel_src {
