@@ -29,6 +29,9 @@ config: edison-linux/.config
 xconfig: edison-linux/.config
 	cd edison-linux && make xconfig
 
+menuconfig: edison-linux/.config
+	cd edison-linux && make menuconfig
+
 oldconfig: edison-linux/.config
 	cd edison-linux && make oldconfig
 
