@@ -15,16 +15,16 @@ echo "copying kernel modules"
 [ -e "${MODULES}" ] && rm -Rf "${MODULES}"
 
 MODCOUNT=0
-for KO in `find $(eh_kernel_src)/* -name '*.ko'`; do
+for KO in `cd $(eh_kernel_src) && find * -name '*.ko'`; do
   D=$(dirname "${KO}")
   mkdir -p "${MODULES}/kernel/${D}"
-  cp "${KO}" "${MODULES}/kernel/${D}"
+  cp "$(eh_kernel_src)/${KO}" "${MODULES}/kernel/${D}"
   echo -n .
   MODCOUNT=$((${MODCOUNT} + 1))
 done
-for KO in $(eh_bcm43340_src)/bcm4334x.ko; do
+for KO in `cd $(eh_bcm43340_src); find bcm4334x.ko`; do
   mkdir -p "${MODULES}/extra"
-  cp "${KO}" "${MODULES}/extra"
+  cp "$(eh_bcm43340_src)/${KO}" "${MODULES}/extra"
   echo -n .
   MODCOUNT=$((${MODCOUNT} + 1))
 done
